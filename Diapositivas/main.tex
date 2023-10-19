@@ -1,0 +1,400 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 2.0 (March 8, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt]{beamer}
+\graphicspath{{Images/}{./}}
+\usepackage{booktabs}
+\usepackage[spanish]{babel}
+\usetheme{Madrid}
+\usefonttheme{default} % Typeset using the default sans serif 
+\usepackage{palatino} % Use the Palatino font for serif text
+\usepackage[default]{opensans} % Use the Open Sans font for 
+\usepackage{hyperref}
+\useinnertheme{rectangles}
+\setbeamertemplate{navigation symbols}{} % Uncomment this line to remove the navigation symbols from the bottom of all slides
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title[Taller de Git y GitHub]{trabajo\_final2\_finalfinal\_bueno - copia.py}
+\subtitle{Un taller de introducción a Git y GitHub}
+
+\author[Delegación EPS \and GUL]{Delegación de Estudiantes EPS \and Grupo de Usuarios de Linux
+\textit{delegeps@uc3m.es \and info@gul.uc3m.es}}
+
+\institute[UC3M]{Universidad Carlos III de Madrid}
+
+\date[\today]{\textbf{Jorge Lázaro Ruiz} \\ \today} 
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SLIDE
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS SLIDE
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Índice}
+	\tableofcontents
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION BODY SLIDES
+%----------------------------------------------------------------------------------------
+
+\section{¿Git? ¿Eso se come?}
+
+%------------------------------------------------
+
+\begin{frame}{Git es tu amigo}
+	
+	Git es una herramienta de \textbf{control de cambios}.
+
+    \bigskip
+    Su función es llevar un registro de versiones anteriores de un mismo archivo de texto plano (ideal para archivos de código).
+
+    \bigskip
+    Hay alternativas, pero la hegemonía de Git se debe a su modelo de ramificación (\textit{branches}), que permite monitorear varias ramas independientes de un mismo repositorio y crearlas, mezclarlas y eliminarlas fácilmente. \tiny Ya hablaremos de esto.
+
+    \normalsize
+    \bigskip
+    La carpeta donde guardamos todos los archivos que queremos que Git controle se llama \textbf{repositorio}.
+    \\
+    Cada una de las versiones que guardamos se registran como una \textbf{confirmación} (o \textbf{\textit{commit}}, en inglés).
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}[fragile]{¿Cómo descargo Git?}
+
+    \begin{block}{Desde la página oficial}
+    La web oficial de Git detecta tu sistema operativo y te redirige a su correspondiente página de descargas.
+    \\
+    \href{https://git-scm.com/downloads}{\texttt{https://git-scm.com/downloads}}
+    \end{block}
+    
+    \begin{block}{Desde la terminal}
+    Git está disponible para su instalación mediante los principales gestores de paquetes.
+        \begin{itemize}
+            \item Con APT (Debian, Ubuntu...): \texttt{sudo apt install git}
+            \item En MacOS suele venir preinstalado, pero puedes comprobarlo con: \texttt{git --version}
+                \begin{itemize}
+                    \item También puedes descargar una versión distinta con Homebrew: \texttt{brew install git}
+                \end{itemize}
+        \end{itemize}
+	\end{block}
+
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{¿Para qué quiero usar Git?}
+
+    \begin{itemize}
+        \item Porque así, si la lías en una práctica, puedes volver a una versión anterior. \\ \footnotesize ¡Se acabaron los nombres como \texttt{trabajo\_final2\_finalfinal\_bueno - copia.py}! ¡Se acabó escribirle a tu profe porque subiste la versión equivocada de la práctica! \normalsize
+        \item Porque puedes hacer tu parte del trabajo mientras tu compa de laboratorio hace la suya (y no morir en el intento).
+        \item Porque en cualquier equipo de desarrollo se usa muchísimo, así que vas a tener que aprender a usarlo sí o sí.
+    \end{itemize}
+    
+\end{frame}
+
+%------------------------------------------------
+\section{Mi primer repositorio}
+
+\begin{frame}{Inicializar un repositorio}
+	\begin{columns}[c] 
+		\begin{column}{0.45\textwidth} % Left column width
+			\textbf{Pasos}
+			\begin{enumerate}
+				\item Creamos una carpeta
+				\item Abrimos la carpeta en la terminal
+				\item Inicializamos el repo con: \texttt{git init}
+			\end{enumerate}
+		\end{column}
+		\begin{column}{0.5\textwidth} % Right column width
+			Un \textbf{repositorio} no es más que la \textbf{carpeta} donde guardaremos los archivos que queremos que Git controle.\\ \smallskip
+            Esto sería el equivalente a la típica carpeta de Drive que haces para una práctica.
+		\end{column}
+	\end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Añadir archivos}
+	\begin{columns}[c] 
+		\begin{column}{0.55\textwidth} % Left column width
+			\textbf{Pasos}
+			\begin{enumerate}
+				\item Creamos/modificamos archivos
+				\item Añadimos los archivos
+                    \begin{itemize}
+                        \item \texttt{git add \textit{<archivo>}}
+                        \item \texttt{git add .}\\(Añade todos los archivos modificados del directorio)
+                    \end{itemize}
+				\item Confirmamos cambios
+                \begin{itemize}
+                    \item \texttt{git commit -m "\textit{<mensaje>}"}
+                    \item \texttt{git commit -m "\textit{<mensaje corto>}"}\texttt{ -m "\textit{<descripción larga>}"}
+                    \item El mensaje es una descripción de lo que hemos cambiado o un nombre para el \textit{commit}.
+                \end{itemize}
+			\end{enumerate}
+		\end{column}
+		\begin{column}{0.45\textwidth} % Right column width
+			\small Cuando hemos hecho cambios en nuestro repositorio y queremos guardarlos, primero tenemos que \textbf{añadir} los archivos que hemos cambiado y luego \textbf{confirmar} esos cambios.\\
+            \smallskip
+            Cada una de estas confirmaciones o \textit{commits} son las versiones de los archivos. Podemos comparar el estado de un mismo archivo en distintos \textit{commits}, revertir los cambios...\\
+		\end{column}
+	\end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+    \frametitle{Otras funciones de Git}
+    \framesubtitle{Ramas}
+
+    Las \textbf{ramas} permiten crear una "<copia"> del repositorio donde podemos modificar lo que queramos sin miedo a que esto afecte a la versión principal del repositorio.\\ \smallskip
+    Una vez las cosas funcionan en la rama nueva, podemos integrarla con la rama principal (\textit{main} o \textit{master}) \textbf{mezclándolas} (en inglés, haciendo un \textit{merge}).
+
+        \begin{columns}[c]
+        \begin{column}{0.45\linewidth}
+            \begin{block}{Crear una rama}
+                \texttt{git branch \textit{<rama>}}
+            \end{block}
+        \end{column}
+
+        \begin{column}{0.45\linewidth}
+            \begin{block}{Cambiar a otra rama}
+                \texttt{git checkout \textit{<rama>}}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \begin{figure}
+        \includegraphics[width=0.6\linewidth]{branches.png}
+        \caption{La rama secundaria se mezcla con la principal en el último \textit{commit}.}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Otras funciones de Git}
+    \framesubtitle{Mezclar ramas (\textit{merge})}
+    
+    \begin{columns}[c]
+        \begin{column}{0.45\linewidth}
+            \begin{block}{Rama \texttt{feature}}
+                \texttt{Esta línea es A.}
+            \end{block}
+        \end{column}
+
+        \begin{column}{0.45\linewidth}
+            \begin{block}{Rama \texttt{main}}
+                \texttt{Esta línea es B.}
+            \end{block}
+        \end{column}
+    \end{columns}
+
+    \bigskip
+
+    ¿Qué pasa si intentamos mezclar \texttt{feature} con \texttt{main}?
+    
+    \begin{block}{Mezclar ramas desde la terminal}
+        \texttt{git checkout main}\\
+        \texttt{git merge feature}\\
+        \smallskip
+        Git nos avisará de que hay un \textbf{conflicto} en el archivo y que no ha podido mezclarlos automáticamente.
+    \end{block}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Resolver conflictos}
+
+    Si abrimos el archivo conflictivo, nos encontraremos con esto: \smallskip
+    
+    \begin{block}{Interfaz de resolución de conflictos}
+        \begin{columns}[c]
+            \begin{column}{0.35\linewidth}
+                \texttt{<<<<<<< HEAD}\\
+                \texttt{Esta línea es B.}\\
+                \texttt{=======}\\
+                \texttt{Esta línea es A.}\\
+                \texttt{>>>>>>> feature}\\
+            \end{column}
+
+            \begin{column}{0.45\linewidth}
+                Tendremos que decidir manualmente con qué versión queremos quedarnos.
+            \end{column}
+        \end{columns}
+    \end{block}
+
+    \bigskip
+    
+    Cuando hayamos resuelto el conflicto, podemos añadir el archivo y, por fin, hacer un \textit{commit}.
+    
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Otras funciones de Git}
+    \framesubtitle{Reservar (\textit{stash})}
+
+    Podemos almacenar temporalmente (o guardar en un \textit{stash}) los cambios en el código para poder trabajar en otra cosa y, más tarde, regresar y volver a aplicar los cambios.
+    \\ \smallskip
+    Es práctico cuando estamos en medio de un cambio en el código y no lo tenemos todo listo para confirmar, pero queremos ponernos a trabajar en otra cosa.
+    
+    \begin{itemize}
+        \item \texttt{git stash}\\Reserva los cambios no confirmados.
+        \item \texttt{git stash pop}\\Recupera los cambios previamente reservados (y elimina la reserva).
+        \item \texttt{git stash apply}\\Recupera los cambios previamente reservados (sin eliminar la reserva).
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\section{Git remoto (y encima táctico)}
+
+\begin{frame}{GitHub: el modo \textit{PvP} de Git}
+	
+	\textbf{GitHub} es una plataforma en línea que permite a los desarrolladores compartir, gestionar y colaborar en repositorios de Git.\\
+    Los repositorios que tenemos subidos a GitHub son \textbf{repositorios remotos}, y podemos sincronizarlos con repositorios locales.
+ 
+	\smallskip 
+
+    \begin{block}{}
+        \href{https://www.github.com}{\texttt{https://www.github.com}}
+    \end{block}
+
+    \smallskip
+	
+	\footnotesize \textbf{Superconsejito:} Podéis solicitar GitHub Pro si utilizáis vuestro correo institucional de la UC3M.
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Algunas funciones de GitHub}
+    \framesubtitle{Repositorios remotos}
+	\begin{columns}[c]
+	    \begin{column}{0.45\textwidth}
+            \begin{itemize}
+                \item \texttt{git add remote}\\Vincula el repositorio local con uno remoto.
+                \item \texttt{git pull}\\Descarga (y fusiona con la rama actual) los cambios más recientes de un repositorio remoto. \\
+                \footnotesize Si no queremos fusionarlos, podemos usar \texttt{git fetch}.\normalsize
+                \item \texttt{git push}\\Sube los cambios del repositorio local al remoto.
+            \end{itemize}
+	    \end{column}
+
+        \begin{column}{0.65\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=0.75\linewidth]{workflow.jpg}
+            \end{figure}
+        \end{column}
+	\end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Algunas funciones de GitHub}
+    \framesubtitle{Colaboración}
+	\begin{itemize}
+	    \item \textbf{Solicitudes de incorporación de cambios (\textit{pull request} o PR)} \\ Cuando hemos terminado nuestro trabajo en una rama, podemos abrir una \textit{pull request} para pedir que mezclen nuestra rama con la rama principal. \\
+        \footnotesize Esto es útil al dividir un trabajo en grupo. Cada integrante trabaja en su rama y, cuando ha acabado, hace una PR. Así, nadie se carga el trabajo de nadie.\normalsize
+        \item \textbf{Bifurcaciones (\textit{fork})} \\ Hacer una copia de un repositorio que no sea nuestro para poder modificarlo como queramos.\\
+        \footnotesize Más adelante, podemos solicitar que incorporen los cambios de nuestro \textit{fork} mediante una PR al repo original.
+	\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame} % Need to use the fragile option when verbatim is used in the slide
+	\frametitle{GitHub con SSH}
+	
+	\begin{block}{Generar nueva clave SSH}
+		\texttt{ssh-keygen -t ed25519 -C \textit{<email@ejemplo.com>}}
+	\end{block}
+
+    \begin{block}{Añadir la clave SSH}
+        \href{https://github.com/settings/ssh/new}{\texttt{https://github.com/settings/ssh/new}}
+    \end{block}
+
+\end{frame}
+
+%------------------------------------------------
+\section{A currar}
+
+\begin{frame}{Clonar un repositorio}
+	\textbf{Clonar} un repositorio es descargar todo su contenido.
+
+    \begin{block}{Clonar con SSH}
+        \texttt{git clone git@github.com:\textit{<usuario>}/\textit{<repositorio>}.git}
+    \end{block}
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\linewidth]{clone.png}
+        \caption{Desplegando \textcolor{green}{\textit{Code}} encontramos la dirección SSH del repo.}
+        \label{fig:enter-label}
+    \end{figure}
+    
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Manos a la obra}
+	
+    Ahora que habéis clonado el repositorio, podéis seguir los pasos que aparecen descritos en el \texttt{README.md} y practicar lo que hemos aprendido.
+
+    \bigskip
+
+    Si tenéis cualquier pregunta, no dudéis en levantar la mano.
+ 
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame} % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
+	\frametitle{Para más información}
+	
+	\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below, you may need to use multiple columns and/or reduce the font size further if you have many references
+		\footnotesize % Reduce the font size in the bibliography
+		
+		\bibitem[Rodríguez, 2021]{p1}
+			Daniel Rodríguez (2021)
+			\newblock Taller Introducción a Git (GUL)
+            \newblock \href{https://www.youtube.com/watch?v=jvsneGS00Tw&t=791s}{\texttt{https://www.youtube.com/watch?v=jvsneGS00Tw}}
+			
+		\bibitem[Arslan, 2021]{p2}
+			Bilal Arslan (2021)
+			\newblock arslanbilal/git-cheat-sheet
+			\newblock \href{https://github.com/arslanbilal/git-cheat-sheet}{\texttt{https://github.com/arslanbilal/git-cheat-sheet}}
+	\end{thebibliography}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
