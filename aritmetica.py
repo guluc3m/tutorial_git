@@ -12,7 +12,7 @@ def sumar(a: int, b: int) -> int:
     """
 
     # ¡Tu código va aquí!
-    return a + b
+    return sum([a,b])
 
 
 def es_par(num: int) -> bool:

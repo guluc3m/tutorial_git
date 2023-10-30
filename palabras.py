@@ -16,5 +16,5 @@ def invertir(cadena: str) -> str:
     :return: Cadena invertida.
     """
 
-    return reverse(cadena)
+    return cadena[::-1]
 
