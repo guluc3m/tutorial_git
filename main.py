@@ -44,7 +44,7 @@ def haz_algo_con(esto: str) -> Any:
     """
 
     # ¡Tu código va aquí!
-    return palabra + invertir(palabra)
+    return esto + p.invertir(esto)
 
 
 
