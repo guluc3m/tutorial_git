@@ -31,7 +31,7 @@ def es_palindromo(palabra: str) -> bool:
     """
 
     # ¡Utiliza la función "invertir" de la biblioteca "palabras"!
-    return (palabra - invertir(palabra) == 0)
+    return (palabra - p.invertir(palabra) == 0)
 
 
 def haz_algo_con(esto: str) -> Any:
