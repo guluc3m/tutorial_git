@@ -2,7 +2,7 @@
 
 
 def longitud(cadena: str) -> int:
-    l = length(cadena)
+    l = len(cadena)
 
     return l
 
@@ -16,5 +16,5 @@ def invertir(cadena: str) -> str:
     :return: Cadena invertida.
     """
 
-    return reverse(cadena)        
+    return reverse(cadena)
 
