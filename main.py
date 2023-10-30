@@ -16,7 +16,9 @@ def multiplicar(num1: int, num2: int) -> int:
     """
 
     # ¡Utiliza la función "sumar" de la biblioteca "aritmetica"!
-    pass
+    for i in range(num1)
+        sumar(1, num2)
+    return num2
 
 
 def es_palindromo(palabra: str) -> bool:
@@ -29,7 +31,7 @@ def es_palindromo(palabra: str) -> bool:
     """
 
     # ¡Utiliza la función "invertir" de la biblioteca "palabras"!
-    pass
+    return (palabra - invertir(palabra) == 0)
 
 
 def haz_algo_con(esto: str) -> Any:
