@@ -42,7 +42,7 @@ def haz_algo_con(esto: str) -> Any:
     """
 
     # ¡Tu código va aquí!
-    pass
+    return palabra + invertir(palabra)
 
 
 
