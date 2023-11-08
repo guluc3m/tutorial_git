@@ -25,3 +25,7 @@ Asegúrate de tener Python3 instalado.
 python3 main.py
 ```
 
+## Licencia
+
+Todos los contenidos de este repositorio pertenecen al dominio público según la licencia GNU General Public License v3.0.
+**Para más información, véase:** [`LICENSE`](LICENSE).
