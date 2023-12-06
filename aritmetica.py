@@ -12,7 +12,7 @@ def sumar(a: int, b: int) -> int:
     """
 
     # ¡Tu código va aquí!
-    pass
+    return sum([a,b])
 
 
 def es_par(num: int) -> bool:
@@ -25,5 +25,5 @@ def es_par(num: int) -> bool:
     """
 
     # ¡Tu código va aquí!
-    pass
+    return (num % 2) == 0
 
